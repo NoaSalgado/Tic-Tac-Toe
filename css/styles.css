@@ -1,0 +1,115 @@
+/****** RESET ******/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/****** GLOBALS ******/
+html {
+    font-size: 62.5%;
+
+    --clr-white: #fdfcdc;
+    --clr-primary: #0081a7;
+    --clr-primary-light: #00afb9;
+    --clr-accent: #f07167;
+    --clr-accent-light: #fed9b7;
+}
+
+body {
+    background-color: var(--clr-white);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.6rem;
+}
+
+input {
+    border: 3px solid var(--clr-primary);
+    border-radius: 0.5rem;
+    outline: none;
+    padding: 1rem;
+}
+
+input::placeholder {
+    color: var(--clr-primary-light);
+}
+
+.btn {
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--clr-white);
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+/******* UTILITY CLASSES ******/
+.flex {
+    display: flex;
+}
+
+/****** HEADER ******/
+.header {
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.main-heading {
+    color: var(--clr-primary);
+    font-size: 4.8rem;
+}
+
+.main-heading span {
+    color: var(--clr-accent);
+}
+
+/****** PLAYERS ******/
+.players-container {
+    justify-content: space-evenly;
+}
+
+.player {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 4rem;
+}
+
+.player__name {
+    color: var(--clr-primary);
+    font-size: 2.4rem;
+}
+
+.player__name-selection {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+}
+
+.player__name-selection.hidden {
+    display: none;
+}
+
+.btn--save {
+    background-color: var(--clr-accent);
+}
+
+.btn--save:hover {
+    background-color: var(--clr-accent-light);
+}
+
+/****** GAMEBOARD ******/
+.gameboard {
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn--start {
+    background-color: var(--clr-primary);
+    font-size: 2rem;
+}
+
+.btn--start:hover {
+    background-color: var(--clr-primary-light);
+}

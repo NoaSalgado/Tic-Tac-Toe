@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/styles.css" />
+        <script src="js/app.js" defer></script>
+        <title>Tic Tac Toe</title>
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="main-heading">Tic <span>Tac</span> Toe</h1>
+        </header>
+
+        <main>
+            <section class="players-container flex">
+                <div class="player flex">
+                    <h2 class="player__name">Player 1</h2>
+                    <form class="player__name-selection flex">
+                        <input type="text" placeholder="Type your name" />
+                        <button class="btn btn--save">Save</button>
+                    </form>
+                </div>
+
+                <div class="player flex">
+                    <h2 class="player__name">Player 2</h2>
+                    <form class="player__name-selection flex">
+                        <input type="text" placeholder="Type your name" />
+                        <button class="btn btn--save">Save</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="gameboard flex">
+                <button type="button" class="btn btn--start">Start Game</button>
+                <div class="board"></div>
+            </section>
+        </main>
+    </body>
+</html>
