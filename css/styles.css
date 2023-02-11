@@ -39,8 +39,10 @@ body {
 
 /****** MAIN ******/
 .main {
-    display: grid;
-    place-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1.5rem;
 }
 
 /****** GAMEBOARD ******/
@@ -66,4 +68,17 @@ body {
 
 .gameboard__cell:hover {
     background-color: var(--clr-secondary);
+}
+
+.restart-btn {
+    background-color: var(--clr-accent);
+    border: none;
+    color: var(--clr-secondary-dark);
+    cursor: pointer;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 1rem 2rem;
+
+    display: inline-block;
 }

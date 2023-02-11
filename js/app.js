@@ -3,6 +3,7 @@ const playerFactory = (symbol) => ({ symbol });
 const displayController = (() => {
     const gameText = document.querySelector('.game-text');
     const cells = document.querySelectorAll('.gameboard__cell');
+    const restartBtn = document.querySelector('.restart-btn');
 
     const changeGameText = (text) => {
         gameText.textContent = text;
@@ -17,7 +18,13 @@ const displayController = (() => {
             cell.style.pointerEvents = 'none';
         });
     };
-    return { cells, displayPlayerSymbol, changeGameText, disableCells };
+    return {
+        cells,
+        restartBtn,
+        displayPlayerSymbol,
+        changeGameText,
+        disableCells,
+    };
 })();
 
 const gameBoard = (() => {
@@ -29,7 +36,14 @@ const gameBoard = (() => {
             displayController.displayPlayerSymbol(cell, symbol);
         }
     };
-    return { board, setBoardPosition };
+
+    const resetBoard = () => {
+        board.fill('');
+        displayController.cells.forEach((cell) => {
+            displayController.displayPlayerSymbol(cell.dataset.cell, '');
+        });
+    };
+    return { board, setBoardPosition, resetBoard };
 })();
 
 const gameController = (() => {
@@ -80,10 +94,16 @@ const gameController = (() => {
         }
     };
 
+    const restartGame = () => {
+        gameBoard.resetBoard();
+    };
+
     const startGame = () => {
         displayController.cells.forEach((cell) => {
             cell.addEventListener('click', makeMove);
         });
+
+        displayController.restartBtn.addEventListener('click', restartGame);
     };
 
     return { startGame };
