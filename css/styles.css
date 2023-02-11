@@ -11,16 +11,17 @@
 html {
     font-size: 62.5%;
 
-    --clr-white: #fdfcdc;
-    --clr-primary: #0081a7;
-    --clr-primary-light: #00afb9;
-    --clr-accent: #f07167;
-    --clr-accent-light: #fed9b7;
+    --clr-background: #004643;
+    --clr-white: #fffffe;
+    --clr-primary: #e8e4e6;
+    --clr-secondary: #abd1c6;
+    --clr-secondary-dark: #001e1d;
+    --clr-accent: #f9bc60;
 }
 
 body {
-    background-color: var(--clr-white);
-    font-family: 'Ubuntu', sans-serif;
+    background-color: var(--clr-background);
+    font-family: 'Permanent Marker', cursive;
     font-size: 1.6rem;
     min-height: 100vh;
 }
@@ -32,12 +33,8 @@ body {
 }
 
 .game-text {
-    color: var(--clr-primary);
-    font-size: 4.8rem;
-}
-
-.main-heading span {
     color: var(--clr-accent);
+    font-size: calc(3.2rem + 2vw);
 }
 
 /****** MAIN ******/
@@ -59,9 +56,14 @@ body {
 .gameboard__cell {
     background-color: var(--clr-primary);
     border: 2px solid var(--clr-white);
-    color: var(--clr-white);
-    font-size: 6rem;
+    color: var(--clr-accent);
+    font-size: 10rem;
+    transition: all 0.3s ease-in-out;
 
     display: grid;
     place-content: center;
+}
+
+.gameboard__cell:hover {
+    background-color: var(--clr-secondary);
 }
