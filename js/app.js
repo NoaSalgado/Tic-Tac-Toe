@@ -13,9 +13,19 @@ const displayController = (() => {
         cells[id].textContent = symbol;
     };
 
-    const disableCells = () => {
+    const disableSelectedCell = (cell) => {
+        cells[cell].style.pointerEvents = 'none';
+    };
+
+    const disableAllCells = () => {
         cells.forEach((cell) => {
             cell.style.pointerEvents = 'none';
+        });
+    };
+
+    const enableCells = () => {
+        cells.forEach((cell) => {
+            cell.style.pointerEvents = 'all';
         });
     };
     return {
@@ -23,7 +33,9 @@ const displayController = (() => {
         restartBtn,
         displayPlayerSymbol,
         changeGameText,
-        disableCells,
+        disableSelectedCell,
+        disableAllCells,
+        enableCells,
     };
 })();
 
@@ -78,24 +90,40 @@ const gameController = (() => {
         return isWinner;
     };
 
+    const playersTied = () => {
+        const filledPositions = gameBoard.board.reduce((acc, position) => {
+            if (position) {
+                acc++;
+            }
+            return acc;
+        }, 0);
+
+        return filledPositions === 9;
+    };
+
     const makeMove = (e) => {
         const { cell } = e.target.dataset;
-        console.log(cell);
+        displayController.disableSelectedCell(cell);
         gameBoard.setBoardPosition(cell, currentPlayer);
 
         if (playerWon()) {
             displayController.changeGameText(`${currentPlayer} WON!!!`);
-            displayController.disableCells();
+            displayController.disableAllCells();
+        } else if (playersTied()) {
+            displayController.changeGameText(`IT´S A DRAW!!`);
         } else {
             currentPlayer =
                 currentPlayer === player1.symbol
                     ? player2.symbol
                     : player1.symbol;
+            displayController.changeGameText(`${currentPlayer} TURN`);
         }
     };
 
     const restartGame = () => {
         gameBoard.resetBoard();
+        displayController.enableCells();
+        displayController.changeGameText('X TURN');
     };
 
     const startGame = () => {
